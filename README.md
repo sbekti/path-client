@@ -9,7 +9,7 @@ npm install
 npm start
 ```
 
-Open your REST API browser (e.g. Postman) at `http://localhost:5000`
+Open your REST API browser (e.g. Postman) at `http://localhost:5000`.
 
 ## REST APIs
 
