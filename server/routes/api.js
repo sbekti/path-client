@@ -18,7 +18,7 @@ router.post('/authenticate', (req, res) => {
 });
 
 router.get('/feed/home', (req, res) => {
-  const token = req.query.token;
+  const token = req.query.oauth_token;
   const limit = req.query.limit;
   const newerThan = req.query.newer_than;
   const olderThan = req.query.older_than;
@@ -35,7 +35,7 @@ router.get('/feed/home', (req, res) => {
 });
 
 router.get('/feed/user', (req, res) => {
-  const token = req.query.token;
+  const token = req.query.oauth_token;
   const userId = req.query.user_id;
   const limit = req.query.limit;
   const newerThan = req.query.newer_than;
