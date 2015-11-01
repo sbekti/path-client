@@ -60,12 +60,20 @@ Parameters:
 
 ### Location Update (Arrived In)
 ```
-GET /api/v1/location/update
+POST /api/v1/location/update
 ```
 
-Parameters:
+```json
+{
+  "oauth_token": "your_oauth_token",
+  "lat": 0.000000,
+  "lng": 0.000000,
+  "accuracy": 16.0,
+  "elevation": 0.0
+}
+```
 
-| Query Parameter | Remarks  |
+| JSON Key | Remarks  |
 | ------------- |-------------|
 | `oauth_token`    | Your `oauth_token` from `/api/v1/authenticate`.  |
 | `lat`    | Latitude up to 6 decimal points.  |
