@@ -25,7 +25,8 @@ router.get('/feed/home', (req, res) => {
 
   const pathClient = new PathClient(token);
 
-  pathClient.getHomeFeed(limit, newerThan, olderThan)
+  pathClient
+    .getHomeFeed(limit, newerThan, olderThan)
     .then((response) => {
       res.send(response);
     })
@@ -43,7 +44,27 @@ router.get('/feed/user', (req, res) => {
 
   const pathClient = new PathClient(token);
 
-  pathClient.getUserFeed(userId, limit, newerThan, olderThan)
+  pathClient
+    .getUserFeed(userId, limit, newerThan, olderThan)
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((error) => {
+      res.send(error);
+    });
+});
+
+router.post('/location/update', (req, res) => {
+  const token = req.body.oauth_token;
+  const lat = req.body.lat;
+  const lng = req.body.lng;
+  const accuracy = req.body.accuracy;
+  const elevation = req.body.elevation;
+
+  const pathClient = new PathClient(token);
+
+  pathClient
+    .updateLocation(lat, lng, accuracy, elevation)
     .then((response) => {
       res.send(response);
     })

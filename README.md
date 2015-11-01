@@ -58,4 +58,20 @@ Parameters:
 | `newer_than` | Only return posts that are newer than the specified timestamp. Must be a valid UNIX timestamp in seconds. May contain milliseconds up to 6 decimal points. |
 | `older_than` | Only return posts that are older than the specified timestamp. Must be a valid UNIX timestamp in seconds. May contain milliseconds up to 6 decimal points. |
 
+### Location Update (Arrived In)
+```
+GET /api/v1/location/update
+```
+
+Parameters:
+
+| Query Parameter | Remarks  |
+| ------------- |-------------|
+| `oauth_token`    | Your `oauth_token` from `/api/v1/authenticate`.  |
+| `lat`    | Latitude up to 6 decimal points.  |
+| `lng`      | Longitude up to 6 decimal points. |
+| `accuracy` | Accuracy in unknown units. Just put 16.0 to be safe. |
+| `elevation` | Elevation in meters. Use 1 decimal point (e.g. 0.0). |
+
+
 This project is not complete yet!
