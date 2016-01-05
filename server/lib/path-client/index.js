@@ -1,15 +1,15 @@
-import request from 'superagent';
+import request from 'superagent'
 
-const CLIENT_ID = 'MzVhMzQ4MTEtZWU2Ni00MzczLWE5NTItNTBhYjJlMzE0YTgz';
+const CLIENT_ID = 'MzVhMzQ4MTEtZWU2Ni00MzczLWE5NTItNTBhYjJlMzE0YTgz'
 
 export default class PathClient {
 
   constructor(token) {
-    this._token = token;
+    this._token = token
   }
 
   static authenticate(username, password) {
-    const url = 'https://api.path.com/3/user/authenticate';
+    const url = 'https://api.path.com/3/user/authenticate'
 
     const formData = {
       post: JSON.stringify({
@@ -18,7 +18,7 @@ export default class PathClient {
         client_id: CLIENT_ID,
         reactivate_user: 1
       })
-    };
+    }
 
     return new Promise((resolve, reject) => {
       request
@@ -27,28 +27,28 @@ export default class PathClient {
         .send(formData)
         .end((err, res) => {
           if (res.ok) {
-            resolve(res.body);
+            resolve(res.body)
           } else {
-            reject(err);
+            reject(err)
           }
-        });
-    });
+        })
+    })
   }
 
   getHomeFeed(limit, newerThan, olderThan) {
-    const url = 'https://api.path.com/3/moment/feed/home?';
+    const url = 'https://api.path.com/3/moment/feed/home?'
 
-    return this._getFeed(url, limit, newerThan, olderThan);
+    return this._getFeed(url, limit, newerThan, olderThan)
   }
 
   getUserFeed(userId, limit, newerThan, olderThan) {
-    const url = 'https://api.path.com/3/moment/feed?';
+    const url = 'https://api.path.com/3/moment/feed?'
 
-    return this._getFeed(url, limit, newerThan, olderThan, userId);
+    return this._getFeed(url, limit, newerThan, olderThan, userId)
   }
 
   updateLocation(lat, lng, accuracy, elevation) {
-    const url = 'https://api.path.com/3/location/update';
+    const url = 'https://api.path.com/3/location/update'
 
     const formData = {
       post: JSON.stringify({
@@ -58,7 +58,7 @@ export default class PathClient {
         evelcation: elevation,
         oauth_token: this._token
       })
-    };
+    }
 
     return new Promise((resolve, reject) => {
       request
@@ -67,34 +67,34 @@ export default class PathClient {
         .send(formData)
         .end((err, res) => {
           if (res.ok) {
-            resolve(res.body);
+            resolve(res.body)
           } else {
-            reject(err);
+            reject(err)
           }
-        });
-    });
+        })
+    })
   }
 
   _getFeed(url, limit, newerThan, olderThan, userId) {
     if (limit) {
-      url += 'limit=' + limit;
+      url += 'limit=' + limit
     } else {
-      url += 'limit=' + 24;
+      url += 'limit=' + 24
     }
 
-    url += '&oauth_token=' + this._token;
-    url += '&gs=1';
+    url += '&oauth_token=' + this._token
+    url += '&gs=1'
 
     if (newerThan) {
-      url += '&newerThan=' + newerThan;
+      url += '&newerThan=' + newerThan
     }
 
     if (olderThan) {
-      url += '&olderThan=' + olderThan;
+      url += '&olderThan=' + olderThan
     }
 
     if (userId) {
-      url += '&user_id=' + userId;
+      url += '&user_id=' + userId
     }
 
     return new Promise((resolve, reject) => {
@@ -102,12 +102,12 @@ export default class PathClient {
         .get(url)
         .end((err, res) => {
           if (res.ok) {
-            resolve(res.body);
+            resolve(res.body)
           } else {
-            reject(err);
+            reject(err)
           }
-        });
-    });
+        })
+    })
   }
 
 }
