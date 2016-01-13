@@ -39,7 +39,7 @@ Parameters:
 | Query Parameter | Remarks  |
 | ------------- |-------------|
 | `oauth_token`    | Your `oauth_token` from `/api/v1/authenticate`.  |
-| `limit`      | Limit the number of returned posts. If not specified, the default value is `24`. |
+| `limit`      | Limit the number of returned posts. If not specified, the default value is `20`. |
 | `newer_than` | Only return posts that are newer than the specified timestamp. Must be a valid UNIX timestamp in seconds. May contain milliseconds up to 6 decimal points. |
 | `older_than` | Only return posts that are older than the specified timestamp. Must be a valid UNIX timestamp in seconds. May contain milliseconds up to 6 decimal points. |
 

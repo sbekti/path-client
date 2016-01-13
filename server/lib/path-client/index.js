@@ -79,18 +79,18 @@ export default class PathClient {
     if (limit) {
       url += 'limit=' + limit
     } else {
-      url += 'limit=' + 24
+      url += 'limit=' + 20
     }
 
     url += '&oauth_token=' + this._token
     url += '&gs=1'
 
     if (newerThan) {
-      url += '&newerThan=' + newerThan
+      url += '&newer_than=' + newerThan
     }
 
     if (olderThan) {
-      url += '&olderThan=' + olderThan
+      url += '&older_than=' + olderThan
     }
 
     if (userId) {
